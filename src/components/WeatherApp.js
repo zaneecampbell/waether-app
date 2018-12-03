@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import WeatherElement from './WeatherElement';
 
 export class WeatherApp extends React.Component {
   state = {
@@ -73,22 +74,15 @@ export class WeatherApp extends React.Component {
               Loading... 
             </div>
           ) : (
-              <Grid spacing={40} container
+              <Grid spacing={0} container
               direction="column"
               justify="center"
               alignItems="center"
               >
                 {
                   this.state.weather.map((day, idx) => (
-                    <Grid item key={idx}>
-                      <Paper>
-                        {day.time}
-                        {day.temp}
-                        {day.min}
-                        {day.max}
-                        {day.sky}
-                        {day.description}
-                      </Paper>
+                    <Grid item key={idx} style={{margin: '1vw'}}>
+                        <WeatherElement time={day.time} temp={day.temp} min={day.min} max={day.max} sky={day.sky} description={day.description} />
                     </Grid>
                   ))
                 }
