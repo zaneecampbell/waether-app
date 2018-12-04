@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     card: {
-        width: '75%'
+        width: '100%'
       },
     media: {
         objectFit: 'scale-down'
@@ -27,22 +27,24 @@ export const WeatherElement = (props) => {
                     <CardMedia
                     component='img'
                     className={classes.media}
-                    height='180'
+                    height='200'
                     image="images/sunny-clipart-transparent-785084-5742938.png"
                     title="Contemplative Reptile"
                     />
                     <CardContent>
-                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h5" component="h2">
+                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h2" component="h2">
                             {props.time.slice(0, 10)}
                         </Typography>
-                        <Typography component="p">
+                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h3" component="h2">
                             {props.description}
-                            Day: {props.time}
-                            temp: {props.temp}
-                            min: {props.min}
-                            max: {props.max}
-                            sky: {props.sky}
                         </Typography>
+                        <Grid>
+                            <Typography style={{textAlign: 'center'}} variant='h4' component="h4">
+                                Temp: {props.temp} <br/>
+                                Est. min: {props.min}   <br/>
+                                Est. max: {props.max}
+                            </Typography>
+                        </Grid>
                     </CardContent>
             </Card>
 
