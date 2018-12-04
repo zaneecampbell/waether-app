@@ -1,62 +1,59 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-    paper: {
-        padding: '50px',
-        typography: '1.5vw'
-    }
+    card: {
+        width: '75%'
+      },
+    media: {
+        objectFit: 'scale-down'
+    },
 });
 
 export const WeatherElement = (props) => {
     const { classes } = props;
     
     return (
-        <Paper classes={{root: classes.paper}}>
-            <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            >
-                <Grid item>
-                    <Paper>
-                        <div> Icon Goes Here </div>
-                    </Paper>
-                </Grid>
-                <Grid item>
-                    <Paper style={{fontSize: '1.5vw'}}>
-                        <Grid 
-                        container
-                        direction="column"
-                        justify="space-evenly"
-                        alignItems="flex-end"
-                        >
-                            <Typography style={{fontSize: '1vw'}}>
-                                Day: {props.time}
-                            </Typography>
-                            <Typography style={{fontSize: '1vw'}}>
-                                temp: {props.temp}
-                            </Typography>
-                            <Typography style={{fontSize: '1vw'}}>
-                                min: {props.min}
-                            </Typography>
-                            <Typography style={{fontSize: '1vw'}}>
-                                max: {props.max}
-                            </Typography>
-                            <Typography style={{fontSize: '1vw'}}>
-                                sky: {props.sky}
-                            </Typography>
+            <Card className={classes.card}>
+                    <CardMedia
+                    component='img'
+                    className={classes.media}
+                    height='180'
+                    image="images/sunny-clipart-transparent-785084-5742938.png"
+                    title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h5" component="h2">
+                            {props.time.slice(0, 10)}
+                        </Typography>
+                        <Typography component="p">
                             {props.description}
-                        </Grid>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </Paper>
+                            Day: {props.time}
+                            temp: {props.temp}
+                            min: {props.min}
+                            max: {props.max}
+                            sky: {props.sky}
+                        </Typography>
+                    </CardContent>
+            </Card>
+
     )
 }
 
 export default withStyles(styles)(WeatherElement);
+
+// Day: {props.time}
+// temp: {props.temp}
+// min: {props.min}
+// max: {props.max}
+// sky: {props.sky}
+// {props.description}

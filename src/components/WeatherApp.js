@@ -74,14 +74,15 @@ export class WeatherApp extends React.Component {
               Loading... 
             </div>
           ) : (
-              <Grid spacing={0} container
-              direction="column"
+              <Grid 
+              container
+              direction="row"
               justify="center"
               alignItems="center"
               >
                 {
                   this.state.weather.map((day, idx) => (
-                    <Grid item key={idx} style={{margin: '1vw'}}>
+                    <Grid item lg={2} key={idx} style={{margin: 'auto', marginTop: '50px'}}>
                         <WeatherElement time={day.time} temp={day.temp} min={day.min} max={day.max} sky={day.sky} description={day.description} />
                     </Grid>
                   ))
