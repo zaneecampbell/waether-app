@@ -21,15 +21,54 @@ const styles = theme => ({
 
 export const WeatherElement = (props) => {
     const { classes } = props;
-    
+    const min = props.min;
+    const max = props.max;
+    const temp = props.temp;
+    const id = props.id;
+
+    let icon = ""
+    let title = ""
+
+    // sets image and tooltip for image based on the weatherID given
+    switch(true) {
+        case id < 300:
+            icon = "images/thunderstorm.png"
+            title = "thunderstorm"
+            break;
+        case id < 502:
+            icon = "images/rain.png"
+            title = "light rain"
+            break;
+        case id < 600:
+            icon = "images/heavy-rain.png"
+            title = "heavy rain"
+            break;
+        case id < 700:
+            icon = "images/snowy.png"
+            title = "snow"
+            break;
+        case id < 800:
+            icon = "images/mist.png"
+            title = "visual obstruction"
+            break;
+        case id === 800:
+            icon = "images/sunny.png"
+            title = "sunny"
+            break;
+        case id < 900:
+            icon = "images/clouds.png"
+            title = "clouds"
+            break;
+    }
+
     return (
             <Card className={classes.card}>
                     <CardMedia
                     component='img'
                     className={classes.media}
                     height='200'
-                    image="images/sunny-clipart-transparent-785084-5742938.png"
-                    title="Contemplative Reptile"
+                    image={icon}
+                    title={title}
                     />
                     <CardContent>
                         <Typography style={{textAlign: 'center'}} gutterBottom variant="h2" component="h2">
@@ -40,9 +79,9 @@ export const WeatherElement = (props) => {
                         </Typography>
                         <Grid>
                             <Typography style={{textAlign: 'center'}} variant='h4' component="h4">
-                                Temp: {props.temp} <br/>
-                                Est. min: {props.min}   <br/>
-                                Est. max: {props.max}
+                                Temp: {`${(((temp) * 9 / 5) + 32)}`.slice(0,4)} <br/>
+                                Est. min: {`${(((min) * 9 / 5) + 32)}`.slice(0,4)}   <br/>
+                                Est. max: {`${(((max) * 9 / 5) + 32)}`.slice(0,4)}
                             </Typography>
                         </Grid>
                     </CardContent>

@@ -24,10 +24,10 @@ export class WeatherApp extends React.Component {
         latitiude: position.coords.latitude,
         longitude: position.coords.longitude
       });
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${this.state.latitiude}&lon=${this.state.longitude}&units=imperial&APPID=f4cc91ca7ae413816afbd1648484b1bd`)
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${this.state.latitiude}&lon=${this.state.longitude}&APPID=f4cc91ca7ae413816afbd1648484b1bd&units=metric`)
         .then((response) => {
           return response.json();
-        })
+        }).catch((e) => {console.log('no response', e)})
           .then((myJson) => {
             const relevantWeather = []
 
@@ -50,8 +50,11 @@ export class WeatherApp extends React.Component {
               weatherObject.max = day.main.temp_max
               weatherObject.sky = day.weather[0].main
               weatherObject.description = day.weather[0].description
+              weatherObject.id = day.weather[0].id
               simpleWeather.push(weatherObject)
             });
+
+            console.log(simpleWeather)
 
             this.setState({
               city: myJson.city.name,
@@ -91,7 +94,7 @@ export class WeatherApp extends React.Component {
                 {
                   this.state.weather.map((day, idx) => (
                     <Grid item lg={2} key={idx} style={{margin: 'auto', marginTop: '50px'}}>
-                        <WeatherElement time={day.time} temp={day.temp} min={day.min} max={day.max} sky={day.sky} description={day.description} />
+                        <WeatherElement time={day.time} temp={day.temp} min={day.min} max={day.max} sky={day.sky} description={day.description} id={day.id}/>
                     </Grid>
                   ))
                 }
