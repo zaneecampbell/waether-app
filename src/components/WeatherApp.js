@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import WeatherElement from './WeatherElement';
+import LoadingPage from './LoadingPage';
 
 export class WeatherApp extends React.Component {
   state = {
@@ -70,9 +71,16 @@ export class WeatherApp extends React.Component {
       <div>
         {
           this.state.weather.length === 0 ? (
-            <div>
-              Loading... 
-            </div>
+            <Grid    
+            container
+            direction="row"
+            justify="center"
+            style={{marginTop: '50px'}}
+            >
+              <Paper style={{padding: '10px'}}>
+                <LoadingPage />
+              </Paper>
+            </Grid>
           ) : (
               <Grid 
               container
