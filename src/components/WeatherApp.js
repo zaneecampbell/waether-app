@@ -54,8 +54,6 @@ export class WeatherApp extends React.Component {
               simpleWeather.push(weatherObject)
             });
 
-            console.log(simpleWeather)
-
             this.setState({
               city: myJson.city.name,
               country: myJson.city.country,

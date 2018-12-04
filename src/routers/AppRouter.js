@@ -3,8 +3,6 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import WeatherApp from '../components/WeatherApp';
 import NotFoundPage from '../components/NotFoundPage';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
 
