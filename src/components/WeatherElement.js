@@ -72,7 +72,7 @@ export const WeatherElement = (props) => {
                     />
                     <CardContent>
                         <Typography style={{textAlign: 'center'}} gutterBottom variant="h2" component="h2">
-                            {props.time.slice(0, 10)}
+                            {props.time.slice(5, 10)}
                         </Typography>
                         <Typography style={{textAlign: 'center'}} gutterBottom variant="h3" component="h2">
                             {props.description}
