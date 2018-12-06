@@ -1,7 +1,17 @@
 import React from 'react';
 import { VictoryChart, VictoryLine} from 'victory';
 
-export const WeatherChart = (props) => {
+export const WeatherChart = ({ weatherInfo }) => {
+
+    const data = []
+    weatherInfo.map((day) => {
+        const weather= {}
+        weather.x = day.time.slice(5, 10)
+        weather.y = Math.round((((day.temp) * 9 / 5) + 32) * 10) / 10
+        data.push(weather);
+    });
+
+    console.log(data);
 
     return (
         <div>
@@ -11,13 +21,7 @@ export const WeatherChart = (props) => {
                 data: { stroke: "#c43a31" },
                 parent: { border: "1px solid #ccc"}
                 }}
-                data={[
-                { x: 1, y: 2 },
-                { x: 2, y: 3 },
-                { x: 3, y: 5 },
-                { x: 4, y: 4 },
-                { x: 5, y: 7 }
-                ]}
+                data={data}
             />
             </VictoryChart>
         </div>
