@@ -97,7 +97,9 @@ export class WeatherApp extends React.Component {
                     </Grid>
                   ))
                 }
-                <WeatherChart weatherInfo={this.state.weather}/>
+                <Grid lg={5} item>
+                  <WeatherChart weatherInfo={this.state.weather}/>
+                </Grid>
               </Grid>
           )
         }
