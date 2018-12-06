@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import WeatherElement from './WeatherElement';
+import WeatherChart from './WeatherChart';
 import LoadingPage from './LoadingPage';
 
 export class WeatherApp extends React.Component {
@@ -96,6 +97,7 @@ export class WeatherApp extends React.Component {
                     </Grid>
                   ))
                 }
+                <WeatherChart />
               </Grid>
           )
         }
