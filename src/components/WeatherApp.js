@@ -5,6 +5,17 @@ import Grid from '@material-ui/core/Grid';
 import WeatherElement from './WeatherElement';
 import WeatherChart from './WeatherChart';
 import LoadingPage from './LoadingPage';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+  weatherElement: {
+    marginTop: '50px',
+    margin: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      margin: '10px'
+  }
+  }
+})
 
 export class WeatherApp extends React.Component {
   state = {
@@ -69,6 +80,9 @@ export class WeatherApp extends React.Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+
     return (
       <div>
         {
@@ -92,7 +106,7 @@ export class WeatherApp extends React.Component {
               >
                 {
                   this.state.weather.map((day, idx) => (
-                    <Grid item lg={2} key={idx} style={{margin: 'auto', marginTop: '50px'}}>
+                    <Grid item md={2} key={idx} classes={{item: classes.weatherElement}}>
                         <WeatherElement time={day.time} temp={day.temp} min={day.min} max={day.max} sky={day.sky} description={day.description} id={day.id}/>
                     </Grid>
                   ))
@@ -108,7 +122,8 @@ export class WeatherApp extends React.Component {
   }
 }
 
-export default WeatherApp;
+export default withStyles(styles)(WeatherApp);
+
 
 
 // api key f4cc91ca7ae413816afbd1648484b1bd

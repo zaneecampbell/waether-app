@@ -17,6 +17,29 @@ const styles = theme => ({
     media: {
         objectFit: 'scale-down'
     },
+    typography1: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: '3vw',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '12vw',
+        }
+    },
+    typography2: {
+        textAlign: 'center',
+        fontWeight: '550',
+        fontSize: '1.75vw',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '10vw'
+        }
+    },
+    typography3: {
+        textAlign: 'center',
+        fontSize: '1.75vw',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '8vw'
+        }
+    }
 });
 
 export const WeatherElement = (props) => {
@@ -71,14 +94,14 @@ export const WeatherElement = (props) => {
                     title={title}
                     />
                     <CardContent>
-                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h2" component="h2">
+                        <Typography classes={{root: classes.typography1}} noWrap gutterBottom>
                             {props.time.slice(5, 10)}
                         </Typography>
-                        <Typography style={{textAlign: 'center'}} gutterBottom variant="h3" component="h2">
+                        <Typography classes={{root: classes.typography2}} noWrap gutterBottom>
                             {props.description}
                         </Typography>
                         <Grid>
-                            <Typography style={{textAlign: 'center'}} variant='h4' component="h4">
+                            <Typography classes={{root: classes.typography3}} noWrap variant='h4'>
                                 Temp: {`${(((temp) * 9 / 5) + 32)}`.slice(0,4)} <br/>
                                 Est. min: {`${(((min) * 9 / 5) + 32)}`.slice(0,4)}   <br/>
                                 Est. max: {`${(((max) * 9 / 5) + 32)}`.slice(0,4)}
